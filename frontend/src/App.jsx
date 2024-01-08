@@ -1,30 +1,34 @@
-import { useState } from 'react'
-import { CreateTodo } from './components/CreateTodo'
-import { Todos } from './components/Todos'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { CreateTodo } from './components/CreateTodo';
+import { Todos } from './components/Todos';
+import { HeadersComponent } from './components/HeadersComponent';
+
+import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([
-    fetch("http://localhost:3000/todo")
-      .then(async function(res){
-        const json = res.json()
-        setTodos(json.todos)
-      })
-  ])
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/todo");
+        const data = await response.json();
+        setTodos(data.todos);
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
+    };
+
+    fetchTodos();
+  }, []); // Run only once on component mount
 
   return (
-   <div>
-    <CreateTodo></CreateTodo>
-    <Todos todos={
-      [
-        {
-          title:"hello from title 1",
-          description:"hello from description 1"
-        }
-      ]
-    }></Todos>
-   </div>
-  )
+    <div>
+      <CreateTodo />
+      <Todos todos={todos} />
+      <HeadersComponent />
+    </div>
+  );
 }
 
-export default App
+export default App;

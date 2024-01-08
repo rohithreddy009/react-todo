@@ -5,7 +5,8 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({   credentials:true,   origin: 'http://localhost:5173', }));
 
 app.post("/todo", async function(req, res) {
     const createPayload = req.body;
@@ -30,10 +31,10 @@ app.post("/todo", async function(req, res) {
 })
 
 app.get("/todo", async function(req, res) {
-    // const todos = await todo.find({});
+    const todos = await todo.find({});
 
     res.json({
-        todos: []
+        todos
     })
 
 })
