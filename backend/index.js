@@ -3,10 +3,29 @@ const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
 const cors = require("cors");
 const app = express();
+const port = 3000;
+
+
+// app.use(express.json());
+// app.use(cors());
+// app.use(cors({   credentials:true,   origin: 'http://localhost:5173'}));
 
 app.use(express.json());
-// app.use(cors());
-app.use(cors({   credentials:true,   origin: 'http://localhost:5173', }));
+
+// Set up CORS middleware
+const allowedOrigins = ['http://localhost:5173', 'https://react-todo-two-iota.vercel.app'];
+
+app.use(cors({
+  credentials: true,
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins array or if it is undefined (e.g., a same-origin request)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+}));
 
 app.post("/todo", async function(req, res) {
     const createPayload = req.body;
@@ -60,4 +79,6 @@ app.put("/completed", async function(req, res) {
     })
 })
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
