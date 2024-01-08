@@ -9,7 +9,7 @@ export function HeadersComponent() {
     const fetchData = async () => {
       try {
         // Fetch headers
-        const responseHeaders = await fetch('http://localhost:3000');
+        const responseHeaders = await fetch('https://react-todo-backend-paov.onrender.com/todo');
         const headersObject = {};
         responseHeaders.headers.forEach((value, name) => {
           headersObject[name] = value;
@@ -17,7 +17,7 @@ export function HeadersComponent() {
         setHeaders(headersObject);
 
         // Fetch todos
-        const responseTodos = await fetch('http://localhost:3000/todo');
+        const responseTodos = await fetch('https://react-todo-backend-paov.onrender.com/todo');
         const todosData = await responseTodos.json();
         setTodos(todosData.todos);
       } catch (error) {

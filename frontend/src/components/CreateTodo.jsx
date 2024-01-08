@@ -13,7 +13,7 @@ export function CreateTodo(props) {
     const fetchData = async () => {
         try {
         //   setLoading(true);
-          const response = await axios.get('http://localhost:3000/todo',  {
+          const response = await axios.get('https://react-todo-backend-paov.onrender.com',  {
             withCredentials: true,
           });
           console.log(response)
@@ -49,7 +49,7 @@ export function CreateTodo(props) {
             margin: 10
         }} onClick={() => {
             // axios
-            fetch("http://localhost:3000/todo", {
+            fetch("https://react-todo-backend-paov.onrender.com/todo", {
                 method: "POST",
                 body: JSON.stringify({
                     title: title,

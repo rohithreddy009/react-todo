@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch("http://localhost:3000/todo");
+        const response = await fetch("https://react-todo-backend-paov.onrender.com/todo");
         const data = await response.json();
         setTodos(data.todos);
       } catch (error) {
