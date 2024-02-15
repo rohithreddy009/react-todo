@@ -24,7 +24,9 @@ function App() {
 
   return (
     <div>
+      <h1>Todos</h1>
       <CreateTodo />
+      <h1>Your Todos</h1>
       <Todos todos={todos} />
       <HeadersComponent />
     </div>

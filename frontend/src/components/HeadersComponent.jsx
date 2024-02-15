@@ -15,11 +15,6 @@ export function HeadersComponent() {
           headersObject[name] = value;
         });
         setHeaders(headersObject);
-
-        // Fetch todos
-        const responseTodos = await fetch('https://react-todo-backend-u5gc.onrender.com/todo');
-        const todosData = await responseTodos.json();
-        setTodos(todosData.todos);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -30,16 +25,6 @@ export function HeadersComponent() {
 
   return (
     <div>
-      <h1>Response Headers</h1>
-      <ul>
-        {Object.entries(headers).map(([name, value]) => (
-          <li key={name}>
-            <strong>{name}:</strong> {value}
-          </li>
-        ))}
-      </ul>
-
-      <h1>Todos</h1>
       <ul>
         {todos.map((todo) => (
           <li key={todo._id}>

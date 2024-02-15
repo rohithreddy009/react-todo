@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import axios from "axios"
 
 export function CreateTodo(props) {
-    // react-query
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     useEffect(()=>{fetchData()
@@ -12,17 +11,13 @@ export function CreateTodo(props) {
     
     const fetchData = async () => {
         try {
-        //   setLoading(true);
           const response = await axios.get('https://react-todo-backend-u5gc.onrender.com',  {
             withCredentials: true,
           });
           console.log(response)
-        //   setState(response.data.data);
-        //   setDefaultTasks(response.data.data);
         } catch (error) {
           console.log("Error =", error);
         }finally{
-        //   setLoading(false);
         }
       };
 
@@ -49,26 +44,23 @@ export function CreateTodo(props) {
             margin: 10
         }} onClick={() => {
             // axios
-            fetch("https://react-todo-backend-u5gc.onrender.com/todo", {
-                method: "POST",
-                body: JSON.stringify({
-                    title: title,
-                    description: description
-                }),
+            axios.post("https://react-todo-backend-u5gc.onrender.com/todo", {
+                title: title,
+                description: description
+            }, {
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-Type": "application/json"
                 }
             })
-                .then(async function(res) {
-                    const json = await res.json();
-                    alert("Todo added");
-                })
+            .then(response => {
+                alert("Todo added");
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
         }}>Add a todo</button>
     </div>
 }
-
-
-
-// 
 
   
