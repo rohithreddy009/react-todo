@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000 ;
 app.use(express.json());
 
 // Set up CORS middleware
-const allowedOrigins = ['http://localhost:5173', 'https://react-todo-two-iota.vercel.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://react-todo-two-iota.vercel.app', 'https://todoapp.rohithreddy.site'];
 
 app.use(cors({
   credentials: true,
