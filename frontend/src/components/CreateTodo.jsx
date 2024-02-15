@@ -49,7 +49,7 @@ export function CreateTodo(props) {
             margin: 10
         }} onClick={() => {
             // axios
-            fetch("https://react-todo-backend-paov.onrender.com/todo", {
+            fetch("https://react-todo-backend-u5gc.onrender.com/todo", {
                 method: "POST",
                 body: JSON.stringify({
                     title: title,
