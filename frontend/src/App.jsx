@@ -20,13 +20,12 @@ function App() {
     };
 
     fetchTodos();
-  }, []); // Run only once on component mount
-
+  }, []); 
   return (
     <div>
-      <h1>Todos</h1>
+      <h1 style={{ textDecoration: 'underline' }}>Todos</h1>
       <CreateTodo />
-      <h1>Your Todos</h1>
+      <h1 style={{ textDecoration: 'underline' }}>Your Todos</h1>
       <Todos todos={todos} />
       <HeadersComponent />
     </div>
