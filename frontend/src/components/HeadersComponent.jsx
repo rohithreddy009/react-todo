@@ -9,7 +9,7 @@ export function HeadersComponent() {
     const fetchData = async () => {
       try {
         // Fetch headers
-        const responseHeaders = await fetch('https://react-todo-backend-u5gc.onrender.com/todo');
+        const responseHeaders = await fetch('https://todobackend.rohithreddy.site/todo');
         const headersObject = {};
         responseHeaders.headers.forEach((value, name) => {
           headersObject[name] = value;
