@@ -11,7 +11,7 @@ export function CreateTodo(props) {
     
     const fetchData = async () => {
         try {
-          const response = await axios.get('https://todobackend.rohithreddy.site/todo',  {
+          const response = await axios.get('https://todobackend.rohithreddy.dev/todo',  {
             withCredentials: true,
           });
           console.log(response)
@@ -48,7 +48,7 @@ export function CreateTodo(props) {
             height: 80
         }} onClick={() => {
             // axios
-            axios.post('https://todobackend.rohithreddy.site/todo', {
+            axios.post('https://todobackend.rohithreddy.dev/todo', {
                 title: title,
                 description: description
         })
